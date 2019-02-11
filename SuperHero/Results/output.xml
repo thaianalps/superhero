@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20190211 13:39:39.865" generator="Robot 3.0.2 (Python 2.7.12 on linux2)">
+<suite source="/home/agriness/Git/SuperHero/Get/GET.robot" id="s1" name="GET">
+<test id="s1-t1" name="Buscar por dados secretos do Homem de ferro">
+<kw name="Dado que obtive permissão junto ao J.A.R.V.I.S." library="BDDpt-br">
+<kw name="Run Keyword" library="BuiltIn">
+<doc>Executes the given keyword with the given arguments.</doc>
+<arguments>
+<arg>${keyword}</arg>
+</arguments>
+<kw name="obtive permissão junto ao J.A.R.V.I.S." library="Resource-API">
+<kw name="Create Session" library="ExtendedRequestsLibrary">
+<doc>Create and return a HTTP session object to a server.</doc>
+<arguments>
+<arg>label=SuperHero</arg>
+<arg>base_url=${URL}</arg>
+</arguments>
+<msg timestamp="20190211 13:39:39.946" level="INFO">Creating Session using : alias=SuperHero, url=https://superheroapi.com/api/, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20190211 13:39:39.946" starttime="20190211 13:39:39.945"></status>
+</kw>
+<status status="PASS" endtime="20190211 13:39:39.946" starttime="20190211 13:39:39.945"></status>
+</kw>
+<status status="PASS" endtime="20190211 13:39:39.946" starttime="20190211 13:39:39.945"></status>
+</kw>
+<status status="PASS" endtime="20190211 13:39:39.946" starttime="20190211 13:39:39.944"></status>
+</kw>
+<kw name="Quando procuro pelos dados secretos do homem de ferro" library="BDDpt-br">
+<kw name="Run Keyword" library="BuiltIn">
+<doc>Executes the given keyword with the given arguments.</doc>
+<arguments>
+<arg>${keyword}</arg>
+</arguments>
+<kw name="procuro pelos dados secretos do homem de ferro" library="Resource-API">
+<kw name="Get Request" library="ExtendedRequestsLibrary">
+<doc>Send a GET request on the session object found in the cache using the given ``label``.</doc>
+<arguments>
+<arg>label=SuperHero</arg>
+<arg>uri=3045712542120919/347</arg>
+</arguments>
+<assign>
+<var>${INFO_HERO}</var>
+</assign>
+<msg timestamp="20190211 13:39:41.659" level="INFO">${INFO_HERO} = &lt;Response [302]&gt;</msg>
+<status status="PASS" endtime="20190211 13:39:41.659" starttime="20190211 13:39:39.948"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>15</arg>
+</arguments>
+<msg timestamp="20190211 13:39:56.659" level="INFO">Slept 15 seconds</msg>
+<status status="PASS" endtime="20190211 13:39:56.660" starttime="20190211 13:39:41.659"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${INFO_HERO.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20190211 13:39:56.660" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20190211 13:39:56.660" level="FAIL">302 != 200</msg>
+<status status="FAIL" endtime="20190211 13:39:56.661" starttime="20190211 13:39:56.660"></status>
+</kw>
+<status status="FAIL" endtime="20190211 13:39:56.661" starttime="20190211 13:39:39.947"></status>
+</kw>
+<status status="FAIL" endtime="20190211 13:39:56.661" starttime="20190211 13:39:39.947"></status>
+</kw>
+<status status="FAIL" endtime="20190211 13:39:56.661" starttime="20190211 13:39:39.947"></status>
+</kw>
+<status status="FAIL" endtime="20190211 13:39:56.661" critical="yes" starttime="20190211 13:39:39.943">302 != 200</status>
+</test>
+<status status="FAIL" endtime="20190211 13:39:56.661" starttime="20190211 13:39:39.866"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="GET" pass="0">GET</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
