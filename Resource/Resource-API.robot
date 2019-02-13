@@ -47,7 +47,7 @@ o seus aliados são "${POSICAO_0}", "${POSICAO_3}", "${POSICAO_1}"
     List Should Contain Value         ${INFO_HERO['biography']['aliases'][3]}   ${POSICAO_3}
     #verificaçao de valor em lista, especificando posiçao ou nao
 
-verificar quem é o mais inteligente
+deve retornar que o "CORINGA" é o mais inteligente
     Log  ${DEADPOOL_PODERES['intelligence']}
     Log  ${CORINGA_PODERES['intelligence']}
     ${VERDADE} =    Set Variable       Deadpool é mais inteligente que o Coringa
@@ -55,7 +55,7 @@ verificar quem é o mais inteligente
     ${RESULTADO} =    Set variable if    ${DEADPOOL_PODERES['intelligence']}>${CORINGA_PODERES['intelligence']}  ${VERDADE}  ${FALSO}
     Log To Console    ${RESULTADO}
 
-verificar quem é o mais forte
+descubro quem é o mais forte
     Log  ${DEADPOOL_PODERES['strength']}
     Log  ${CORINGA_PODERES['strength']}
     ${VERDADE} =    Set Variable       Deadpool é mais forte que o Coringa
@@ -64,7 +64,7 @@ verificar quem é o mais forte
     Log To Console    ${RESULTADO}
 
 
-verificar quem é o mais rápido
+descubro quem é o mais rápido
     Log  ${DEADPOOL_PODERES['speed']}
     Log  ${CORINGA_PODERES['speed']}
     ${VERDADE} =    Set Variable       Deadpool é mais rápido que o Coringa

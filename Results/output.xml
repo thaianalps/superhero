@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20190213 11:13:53.613" generator="Robot 3.0.2 (Python 2.7.12 on linux2)">
+<robot generated="20190213 14:30:24.742" generator="Robot 3.0.2 (Python 2.7.12 on linux2)">
 <suite source="/home/agriness/Documentos/superhero-master/Get/GET.robot" id="s1" name="GET">
-<test id="s1-t1" name="Comparar poderes entre Deadpool e Hulk">
+<test id="s1-t1" name="Buscar por dados secretos do Homem de ferro">
 <kw name="Dado que obtive permissão junto ao J.A.R.V.I.S." library="BDDpt-br">
 <kw name="Run Keyword" library="BuiltIn">
 <doc>Executes the given keyword with the given arguments.</doc>
@@ -13,16 +13,196 @@
 <doc>Create and return a HTTP session object to a server.</doc>
 <arguments>
 <arg>SuperHero</arg>
-<arg>https://www.superheroapi.com/api.php/3045712542120919</arg>
+<arg>${URL}</arg>
 </arguments>
-<msg timestamp="20190213 11:13:53.701" level="INFO">Creating Session using : alias=SuperHero, url=https://www.superheroapi.com/api.php/3045712542120919, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" endtime="20190213 11:13:53.701" starttime="20190213 11:13:53.700"></status>
+<msg timestamp="20190213 14:30:24.820" level="INFO">Creating Session using : alias=SuperHero, url=https://www.superheroapi.com/api.php/3045712542120919, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20190213 14:30:24.820" starttime="20190213 14:30:24.819"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:53.701" starttime="20190213 11:13:53.700"></status>
+<status status="PASS" endtime="20190213 14:30:24.820" starttime="20190213 14:30:24.819"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:53.701" starttime="20190213 11:13:53.700"></status>
+<status status="PASS" endtime="20190213 14:30:24.820" starttime="20190213 14:30:24.818"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:53.701" starttime="20190213 11:13:53.699"></status>
+<status status="PASS" endtime="20190213 14:30:24.820" starttime="20190213 14:30:24.818"></status>
+</kw>
+<kw name="Quando procuro pelos dados secretos do homem de ferro" library="BDDpt-br">
+<kw name="Run Keyword" library="BuiltIn">
+<doc>Executes the given keyword with the given arguments.</doc>
+<arguments>
+<arg>${keyword}</arg>
+</arguments>
+<kw name="procuro pelos dados secretos do homem de ferro" library="Resource-API">
+<kw name="Get Request" library="ExtendedRequestsLibrary">
+<doc>Send a GET request on the session object found in the cache using the given ``label``.</doc>
+<arguments>
+<arg>SuperHero</arg>
+<arg>uri=/346</arg>
+</arguments>
+<assign>
+<var>${INFO_HERO}</var>
+</assign>
+<msg timestamp="20190213 14:30:31.475" level="INFO">${INFO_HERO} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190213 14:30:31.475" starttime="20190213 14:30:24.821"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${INFO_HERO.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20190213 14:30:31.476" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190213 14:30:31.476" starttime="20190213 14:30:31.476"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${INFO_HERO}</arg>
+<arg>${INFO_HERO.json()}</arg>
+</arguments>
+<msg timestamp="20190213 14:30:31.478" level="INFO">${INFO_HERO} = {u'name': u'Iron Man', u'image': {u'url': u'https://www.superherodb.com/pictures2/portraits/10/100/85.jpg'}, u'work': {u'base': u'Seattle, Washington', u'occupation': u'Inventor, Industrialist; former...</msg>
+<status status="PASS" endtime="20190213 14:30:31.478" starttime="20190213 14:30:31.477"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.478" starttime="20190213 14:30:24.821"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.478" starttime="20190213 14:30:24.821"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.478" starttime="20190213 14:30:24.820"></status>
+</kw>
+<kw name="Então no response o atributo &quot;biography&quot; está presente" library="BDDpt-br">
+<kw name="Run Keyword" library="BuiltIn">
+<doc>Executes the given keyword with the given arguments.</doc>
+<arguments>
+<arg>${keyword}</arg>
+</arguments>
+<kw name="no response o atributo &quot;biography&quot; está presente" library="Resource-API">
+<kw name="Dictionary Should Contain Key" library="Collections">
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<arguments>
+<arg>${INFO_HERO}</arg>
+<arg>${ATRIBUTO}</arg>
+</arguments>
+<status status="PASS" endtime="20190213 14:30:31.480" starttime="20190213 14:30:31.480"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.481" starttime="20190213 14:30:31.479"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.481" starttime="20190213 14:30:31.479"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.481" starttime="20190213 14:30:31.478"></status>
+</kw>
+<kw name="E o conteúdo apresentado no atributo Full-name é &quot;Tony Stark&quot;" library="BDDpt-br">
+<kw name="Run Keyword" library="BuiltIn">
+<doc>Executes the given keyword with the given arguments.</doc>
+<arguments>
+<arg>${keyword}</arg>
+</arguments>
+<kw name="o conteúdo apresentado no atributo Full-name é &quot;Tony Stark&quot;" library="Resource-API">
+<kw name="Dictionary Should Contain Item" library="Collections">
+<doc>An item of ``key``/``value`` must be found in a `dictionary`.</doc>
+<arguments>
+<arg>${INFO_HERO['biography']}</arg>
+<arg>full-name</arg>
+<arg>Tony Stark</arg>
+</arguments>
+<status status="PASS" endtime="20190213 14:30:31.483" starttime="20190213 14:30:31.482"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.483" starttime="20190213 14:30:31.482"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.483" starttime="20190213 14:30:31.482"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.483" starttime="20190213 14:30:31.481"></status>
+</kw>
+<kw name="E o seus aliados são &quot;Iron Knight&quot;, &quot;Cobalt Man II&quot;, &quot;Hogan Potts&quot;" library="BDDpt-br">
+<kw name="Run Keyword" library="BuiltIn">
+<doc>Executes the given keyword with the given arguments.</doc>
+<arguments>
+<arg>${keyword}</arg>
+</arguments>
+<kw name="o seus aliados são &quot;Iron Knight&quot;, &quot;Cobalt Man II&quot;, &quot;Hogan Potts&quot;" library="Resource-API">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${INFO_HERO['biography']['aliases']}</arg>
+</arguments>
+<msg timestamp="20190213 14:30:31.485" level="INFO">[u'Iron Knight', u'Hogan Potts', u'Spare Parts Man', u'Cobalt Man II', u'Crimson Dynamo', u'Ironman']</msg>
+<status status="PASS" endtime="20190213 14:30:31.485" starttime="20190213 14:30:31.484"></status>
+</kw>
+<kw name="List Should Contain Value" library="Collections">
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<arguments>
+<arg>${INFO_HERO['biography']['aliases']}</arg>
+<arg>${POSICAO_0}</arg>
+</arguments>
+<status status="PASS" endtime="20190213 14:30:31.486" starttime="20190213 14:30:31.485"></status>
+</kw>
+<kw name="List Should Contain Value" library="Collections">
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<arguments>
+<arg>${INFO_HERO['biography']['aliases']}</arg>
+<arg>${POSICAO_1}</arg>
+</arguments>
+<status status="PASS" endtime="20190213 14:30:31.486" starttime="20190213 14:30:31.486"></status>
+</kw>
+<kw name="List Should Contain Value" library="Collections">
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<arguments>
+<arg>${INFO_HERO['biography']['aliases'][3]}</arg>
+<arg>${POSICAO_3}</arg>
+</arguments>
+<status status="PASS" endtime="20190213 14:30:31.486" starttime="20190213 14:30:31.486"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.487" starttime="20190213 14:30:31.484"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.487" starttime="20190213 14:30:31.484"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.487" starttime="20190213 14:30:31.484"></status>
+</kw>
+<kw name="E o nível de inteligencia encontrada é &quot;90&quot;" library="BDDpt-br">
+<kw name="Run Keyword" library="BuiltIn">
+<doc>Executes the given keyword with the given arguments.</doc>
+<arguments>
+<arg>${keyword}</arg>
+</arguments>
+<kw name="o nível de inteligencia encontrada é &quot;90&quot;" library="Resource-API">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${INFO_HERO['powerstats']['intelligence']}</arg>
+<arg>${INTELIGENCIA}</arg>
+</arguments>
+<msg timestamp="20190213 14:30:31.489" level="FAIL">100 != 90</msg>
+<status status="FAIL" endtime="20190213 14:30:31.489" starttime="20190213 14:30:31.488"></status>
+</kw>
+<status status="FAIL" endtime="20190213 14:30:31.489" starttime="20190213 14:30:31.488"></status>
+</kw>
+<status status="FAIL" endtime="20190213 14:30:31.489" starttime="20190213 14:30:31.487"></status>
+</kw>
+<status status="FAIL" endtime="20190213 14:30:31.489" starttime="20190213 14:30:31.487"></status>
+</kw>
+<status status="FAIL" endtime="20190213 14:30:31.489" critical="yes" starttime="20190213 14:30:24.817">100 != 90</status>
+</test>
+<test id="s1-t2" name="Batalha super trunfo: Deadpool vs Coringa">
+<kw name="Dado que obtive permissão junto ao J.A.R.V.I.S." library="BDDpt-br">
+<kw name="Run Keyword" library="BuiltIn">
+<doc>Executes the given keyword with the given arguments.</doc>
+<arguments>
+<arg>${keyword}</arg>
+</arguments>
+<kw name="obtive permissão junto ao J.A.R.V.I.S." library="Resource-API">
+<kw name="Create Session" library="ExtendedRequestsLibrary">
+<doc>Create and return a HTTP session object to a server.</doc>
+<arguments>
+<arg>SuperHero</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20190213 14:30:31.491" level="INFO">Creating Session using : alias=SuperHero, url=https://www.superheroapi.com/api.php/3045712542120919, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20190213 14:30:31.491" starttime="20190213 14:30:31.491"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.492" starttime="20190213 14:30:31.491"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.492" starttime="20190213 14:30:31.490"></status>
+</kw>
+<status status="PASS" endtime="20190213 14:30:31.492" starttime="20190213 14:30:31.490"></status>
 </kw>
 <kw name="Quando procuro pelos dados secretos do Coringa" library="BDDpt-br">
 <kw name="Run Keyword" library="BuiltIn">
@@ -40,8 +220,8 @@
 <assign>
 <var>${CORINGA}</var>
 </assign>
-<msg timestamp="20190213 11:13:55.528" level="INFO">${CORINGA} = &lt;Response [200]&gt;</msg>
-<status status="PASS" endtime="20190213 11:13:55.528" starttime="20190213 11:13:53.702"></status>
+<msg timestamp="20190213 14:30:33.476" level="INFO">${CORINGA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190213 14:30:33.476" starttime="20190213 14:30:31.493"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -49,18 +229,18 @@
 <arg>${CORINGA.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20190213 11:13:55.529" level="INFO">Argument types are:
+<msg timestamp="20190213 14:30:33.478" level="INFO">Argument types are:
 &lt;type 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20190213 11:13:55.529" starttime="20190213 11:13:55.528"></status>
+<status status="PASS" endtime="20190213 14:30:33.478" starttime="20190213 14:30:33.477"></status>
 </kw>
 <kw name="Log" library="BuiltIn">
 <doc>Logs the given message with the given level.</doc>
 <arguments>
 <arg>${CORINGA.json()['powerstats']}</arg>
 </arguments>
-<msg timestamp="20190213 11:13:55.530" level="INFO">{u'strength': u'10', u'power': u'43', u'combat': u'70', u'durability': u'60', u'intelligence': u'100', u'speed': u'12'}</msg>
-<status status="PASS" endtime="20190213 11:13:55.530" starttime="20190213 11:13:55.529"></status>
+<msg timestamp="20190213 14:30:33.479" level="INFO">{u'strength': u'10', u'power': u'43', u'combat': u'70', u'durability': u'60', u'intelligence': u'100', u'speed': u'12'}</msg>
+<status status="PASS" endtime="20190213 14:30:33.480" starttime="20190213 14:30:33.478"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
@@ -68,14 +248,14 @@
 <arg>${CORINGA_PODERES}</arg>
 <arg>${CORINGA.json()['powerstats']}</arg>
 </arguments>
-<msg timestamp="20190213 11:13:55.532" level="INFO">${CORINGA_PODERES} = {u'strength': u'10', u'power': u'43', u'combat': u'70', u'durability': u'60', u'intelligence': u'100', u'speed': u'12'}</msg>
-<status status="PASS" endtime="20190213 11:13:55.532" starttime="20190213 11:13:55.530"></status>
+<msg timestamp="20190213 14:30:33.483" level="INFO">${CORINGA_PODERES} = {u'strength': u'10', u'power': u'43', u'combat': u'70', u'durability': u'60', u'intelligence': u'100', u'speed': u'12'}</msg>
+<status status="PASS" endtime="20190213 14:30:33.483" starttime="20190213 14:30:33.480"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:55.532" starttime="20190213 11:13:53.702"></status>
+<status status="PASS" endtime="20190213 14:30:33.483" starttime="20190213 14:30:31.492"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:55.532" starttime="20190213 11:13:53.702"></status>
+<status status="PASS" endtime="20190213 14:30:33.483" starttime="20190213 14:30:31.492"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:55.532" starttime="20190213 11:13:53.701"></status>
+<status status="PASS" endtime="20190213 14:30:33.483" starttime="20190213 14:30:31.492"></status>
 </kw>
 <kw name="E procuro pelos dados secretos do Deadpool" library="BDDpt-br">
 <kw name="Run Keyword" library="BuiltIn">
@@ -93,8 +273,8 @@
 <assign>
 <var>${DEADPOOL}</var>
 </assign>
-<msg timestamp="20190213 11:13:56.038" level="INFO">${DEADPOOL} = &lt;Response [200]&gt;</msg>
-<status status="PASS" endtime="20190213 11:13:56.038" starttime="20190213 11:13:55.534"></status>
+<msg timestamp="20190213 14:30:38.017" level="INFO">${DEADPOOL} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190213 14:30:38.017" starttime="20190213 14:30:33.484"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -102,18 +282,18 @@
 <arg>${DEADPOOL.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20190213 11:13:56.038" level="INFO">Argument types are:
+<msg timestamp="20190213 14:30:38.018" level="INFO">Argument types are:
 &lt;type 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20190213 11:13:56.039" starttime="20190213 11:13:56.038"></status>
+<status status="PASS" endtime="20190213 14:30:38.019" starttime="20190213 14:30:38.018"></status>
 </kw>
 <kw name="Log" library="BuiltIn">
 <doc>Logs the given message with the given level.</doc>
 <arguments>
 <arg>${DEADPOOL.json()['powerstats']}</arg>
 </arguments>
-<msg timestamp="20190213 11:13:56.039" level="INFO">{u'strength': u'32', u'power': u'100', u'combat': u'100', u'durability': u'100', u'intelligence': u'69', u'speed': u'50'}</msg>
-<status status="PASS" endtime="20190213 11:13:56.039" starttime="20190213 11:13:56.039"></status>
+<msg timestamp="20190213 14:30:38.019" level="INFO">{u'strength': u'32', u'power': u'100', u'combat': u'100', u'durability': u'100', u'intelligence': u'69', u'speed': u'50'}</msg>
+<status status="PASS" endtime="20190213 14:30:38.019" starttime="20190213 14:30:38.019"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
@@ -121,22 +301,38 @@
 <arg>${DEADPOOL_PODERES}</arg>
 <arg>${DEADPOOL.json()['powerstats']}</arg>
 </arguments>
-<msg timestamp="20190213 11:13:56.041" level="INFO">${DEADPOOL_PODERES} = {u'strength': u'32', u'power': u'100', u'combat': u'100', u'durability': u'100', u'intelligence': u'69', u'speed': u'50'}</msg>
-<status status="PASS" endtime="20190213 11:13:56.041" starttime="20190213 11:13:56.040"></status>
+<msg timestamp="20190213 14:30:38.021" level="INFO">${DEADPOOL_PODERES} = {u'strength': u'32', u'power': u'100', u'combat': u'100', u'durability': u'100', u'intelligence': u'69', u'speed': u'50'}</msg>
+<status status="PASS" endtime="20190213 14:30:38.021" starttime="20190213 14:30:38.020"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.041" starttime="20190213 11:13:55.533"></status>
+<status status="PASS" endtime="20190213 14:30:38.021" starttime="20190213 14:30:33.484"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.041" starttime="20190213 11:13:55.533"></status>
+<status status="PASS" endtime="20190213 14:30:38.021" starttime="20190213 14:30:33.484"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.041" starttime="20190213 11:13:55.532"></status>
+<status status="PASS" endtime="20190213 14:30:38.021" starttime="20190213 14:30:33.483"></status>
 </kw>
-<kw name="Então verificar quem é o mais inteligente" library="BDDpt-br">
+<kw name="Então deve retornar que o &quot;CORINGA&quot; é o mais inteligente" library="BDDpt-br">
 <kw name="Run Keyword" library="BuiltIn">
 <doc>Executes the given keyword with the given arguments.</doc>
 <arguments>
 <arg>${keyword}</arg>
 </arguments>
-<kw name="verificar quem é o mais inteligente" library="Resource-API">
+<kw name="deve retornar que o &quot;CORINGA&quot; é o mais inteligente" library="Resource-API">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${DEADPOOL_PODERES['intelligence']}</arg>
+</arguments>
+<msg timestamp="20190213 14:30:38.023" level="INFO">69</msg>
+<status status="PASS" endtime="20190213 14:30:38.023" starttime="20190213 14:30:38.022"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${CORINGA_PODERES['intelligence']}</arg>
+</arguments>
+<msg timestamp="20190213 14:30:38.023" level="INFO">100</msg>
+<status status="PASS" endtime="20190213 14:30:38.023" starttime="20190213 14:30:38.023"></status>
+</kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
@@ -145,8 +341,8 @@
 <assign>
 <var>${VERDADE}</var>
 </assign>
-<msg timestamp="20190213 11:13:56.044" level="INFO">${VERDADE} = Deadpool é mais inteligente que o Coringa</msg>
-<status status="PASS" endtime="20190213 11:13:56.044" starttime="20190213 11:13:56.043"></status>
+<msg timestamp="20190213 14:30:38.024" level="INFO">${VERDADE} = Deadpool é mais inteligente que o Coringa</msg>
+<status status="PASS" endtime="20190213 14:30:38.024" starttime="20190213 14:30:38.023"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -156,8 +352,8 @@
 <assign>
 <var>${FALSO}</var>
 </assign>
-<msg timestamp="20190213 11:13:56.044" level="INFO">${FALSO} = Coringa é mais inteligente que o Deadpool</msg>
-<status status="PASS" endtime="20190213 11:13:56.044" starttime="20190213 11:13:56.044"></status>
+<msg timestamp="20190213 14:30:38.024" level="INFO">${FALSO} = Coringa é mais inteligente que o Deadpool</msg>
+<status status="PASS" endtime="20190213 14:30:38.024" starttime="20190213 14:30:38.024"></status>
 </kw>
 <kw name="Set Variable If" library="BuiltIn">
 <doc>Sets variable based on the given condition.</doc>
@@ -169,29 +365,45 @@
 <assign>
 <var>${RESULTADO}</var>
 </assign>
-<msg timestamp="20190213 11:13:56.046" level="INFO">${RESULTADO} = Coringa é mais inteligente que o Deadpool</msg>
-<status status="PASS" endtime="20190213 11:13:56.046" starttime="20190213 11:13:56.045"></status>
+<msg timestamp="20190213 14:30:38.025" level="INFO">${RESULTADO} = Coringa é mais inteligente que o Deadpool</msg>
+<status status="PASS" endtime="20190213 14:30:38.025" starttime="20190213 14:30:38.024"></status>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <doc>Logs the given message to the console.</doc>
 <arguments>
 <arg>${RESULTADO}</arg>
 </arguments>
-<status status="PASS" endtime="20190213 11:13:56.047" starttime="20190213 11:13:56.046"></status>
+<status status="PASS" endtime="20190213 14:30:38.026" starttime="20190213 14:30:38.025"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.047" starttime="20190213 11:13:56.043"></status>
+<status status="PASS" endtime="20190213 14:30:38.026" starttime="20190213 14:30:38.022"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.047" starttime="20190213 11:13:56.042"></status>
+<status status="PASS" endtime="20190213 14:30:38.026" starttime="20190213 14:30:38.022"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.047" starttime="20190213 11:13:56.042"></status>
+<status status="PASS" endtime="20190213 14:30:38.026" starttime="20190213 14:30:38.021"></status>
 </kw>
-<kw name="E verificar quem é o mais forte" library="BDDpt-br">
+<kw name="E descubro quem é o mais forte" library="BDDpt-br">
 <kw name="Run Keyword" library="BuiltIn">
 <doc>Executes the given keyword with the given arguments.</doc>
 <arguments>
 <arg>${keyword}</arg>
 </arguments>
-<kw name="verificar quem é o mais forte" library="Resource-API">
+<kw name="descubro quem é o mais forte" library="Resource-API">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${DEADPOOL_PODERES['strength']}</arg>
+</arguments>
+<msg timestamp="20190213 14:30:38.028" level="INFO">32</msg>
+<status status="PASS" endtime="20190213 14:30:38.028" starttime="20190213 14:30:38.027"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${CORINGA_PODERES['strength']}</arg>
+</arguments>
+<msg timestamp="20190213 14:30:38.028" level="INFO">10</msg>
+<status status="PASS" endtime="20190213 14:30:38.028" starttime="20190213 14:30:38.028"></status>
+</kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
@@ -200,8 +412,8 @@
 <assign>
 <var>${VERDADE}</var>
 </assign>
-<msg timestamp="20190213 11:13:56.048" level="INFO">${VERDADE} = Deadpool é mais forte que o Coringa</msg>
-<status status="PASS" endtime="20190213 11:13:56.048" starttime="20190213 11:13:56.048"></status>
+<msg timestamp="20190213 14:30:38.029" level="INFO">${VERDADE} = Deadpool é mais forte que o Coringa</msg>
+<status status="PASS" endtime="20190213 14:30:38.029" starttime="20190213 14:30:38.028"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -211,8 +423,8 @@
 <assign>
 <var>${FALSO}</var>
 </assign>
-<msg timestamp="20190213 11:13:56.049" level="INFO">${FALSO} = Coringa é mais forte que o Deadpool</msg>
-<status status="PASS" endtime="20190213 11:13:56.049" starttime="20190213 11:13:56.049"></status>
+<msg timestamp="20190213 14:30:38.029" level="INFO">${FALSO} = Coringa é mais forte que o Deadpool</msg>
+<status status="PASS" endtime="20190213 14:30:38.029" starttime="20190213 14:30:38.029"></status>
 </kw>
 <kw name="Set Variable If" library="BuiltIn">
 <doc>Sets variable based on the given condition.</doc>
@@ -224,29 +436,45 @@
 <assign>
 <var>${RESULTADO}</var>
 </assign>
-<msg timestamp="20190213 11:13:56.049" level="INFO">${RESULTADO} = Deadpool é mais forte que o Coringa</msg>
-<status status="PASS" endtime="20190213 11:13:56.049" starttime="20190213 11:13:56.049"></status>
+<msg timestamp="20190213 14:30:38.030" level="INFO">${RESULTADO} = Deadpool é mais forte que o Coringa</msg>
+<status status="PASS" endtime="20190213 14:30:38.030" starttime="20190213 14:30:38.029"></status>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <doc>Logs the given message to the console.</doc>
 <arguments>
 <arg>${RESULTADO}</arg>
 </arguments>
-<status status="PASS" endtime="20190213 11:13:56.050" starttime="20190213 11:13:56.049"></status>
+<status status="PASS" endtime="20190213 14:30:38.030" starttime="20190213 14:30:38.030"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.050" starttime="20190213 11:13:56.048"></status>
+<status status="PASS" endtime="20190213 14:30:38.031" starttime="20190213 14:30:38.027"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.050" starttime="20190213 11:13:56.048"></status>
+<status status="PASS" endtime="20190213 14:30:38.031" starttime="20190213 14:30:38.027"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.050" starttime="20190213 11:13:56.047"></status>
+<status status="PASS" endtime="20190213 14:30:38.031" starttime="20190213 14:30:38.026"></status>
 </kw>
-<kw name="E verificar quem é o mais rápido" library="BDDpt-br">
+<kw name="E descubro quem é o mais rápido" library="BDDpt-br">
 <kw name="Run Keyword" library="BuiltIn">
 <doc>Executes the given keyword with the given arguments.</doc>
 <arguments>
 <arg>${keyword}</arg>
 </arguments>
-<kw name="verificar quem é o mais rápido" library="Resource-API">
+<kw name="descubro quem é o mais rápido" library="Resource-API">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${DEADPOOL_PODERES['speed']}</arg>
+</arguments>
+<msg timestamp="20190213 14:30:38.032" level="INFO">50</msg>
+<status status="PASS" endtime="20190213 14:30:38.032" starttime="20190213 14:30:38.032"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${CORINGA_PODERES['speed']}</arg>
+</arguments>
+<msg timestamp="20190213 14:30:38.032" level="INFO">12</msg>
+<status status="PASS" endtime="20190213 14:30:38.032" starttime="20190213 14:30:38.032"></status>
+</kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
@@ -255,8 +483,8 @@
 <assign>
 <var>${VERDADE}</var>
 </assign>
-<msg timestamp="20190213 11:13:56.051" level="INFO">${VERDADE} = Deadpool é mais rápido que o Coringa</msg>
-<status status="PASS" endtime="20190213 11:13:56.051" starttime="20190213 11:13:56.051"></status>
+<msg timestamp="20190213 14:30:38.033" level="INFO">${VERDADE} = Deadpool é mais rápido que o Coringa</msg>
+<status status="PASS" endtime="20190213 14:30:38.033" starttime="20190213 14:30:38.033"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -266,8 +494,8 @@
 <assign>
 <var>${FALSO}</var>
 </assign>
-<msg timestamp="20190213 11:13:56.051" level="INFO">${FALSO} = Coringa é mais rápido que o Deadpool</msg>
-<status status="PASS" endtime="20190213 11:13:56.051" starttime="20190213 11:13:56.051"></status>
+<msg timestamp="20190213 14:30:38.033" level="INFO">${FALSO} = Coringa é mais rápido que o Deadpool</msg>
+<status status="PASS" endtime="20190213 14:30:38.033" starttime="20190213 14:30:38.033"></status>
 </kw>
 <kw name="Set Variable If" library="BuiltIn">
 <doc>Sets variable based on the given condition.</doc>
@@ -279,35 +507,35 @@
 <assign>
 <var>${RESULTADO}</var>
 </assign>
-<msg timestamp="20190213 11:13:56.052" level="INFO">${RESULTADO} = Deadpool é mais rápido que o Coringa</msg>
-<status status="PASS" endtime="20190213 11:13:56.052" starttime="20190213 11:13:56.052"></status>
+<msg timestamp="20190213 14:30:38.034" level="INFO">${RESULTADO} = Deadpool é mais rápido que o Coringa</msg>
+<status status="PASS" endtime="20190213 14:30:38.034" starttime="20190213 14:30:38.033"></status>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <doc>Logs the given message to the console.</doc>
 <arguments>
 <arg>${RESULTADO}</arg>
 </arguments>
-<status status="PASS" endtime="20190213 11:13:56.052" starttime="20190213 11:13:56.052"></status>
+<status status="PASS" endtime="20190213 14:30:38.035" starttime="20190213 14:30:38.034"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.053" starttime="20190213 11:13:56.051"></status>
+<status status="PASS" endtime="20190213 14:30:38.035" starttime="20190213 14:30:38.031"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.053" starttime="20190213 11:13:56.050"></status>
+<status status="PASS" endtime="20190213 14:30:38.035" starttime="20190213 14:30:38.031"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.053" starttime="20190213 11:13:56.050"></status>
+<status status="PASS" endtime="20190213 14:30:38.035" starttime="20190213 14:30:38.031"></status>
 </kw>
-<status status="PASS" endtime="20190213 11:13:56.053" critical="yes" starttime="20190213 11:13:53.698"></status>
+<status status="PASS" endtime="20190213 14:30:38.035" critical="yes" starttime="20190213 14:30:31.489"></status>
 </test>
-<status status="PASS" endtime="20190213 11:13:56.053" starttime="20190213 11:13:53.614"></status>
+<status status="FAIL" endtime="20190213 14:30:38.036" starttime="20190213 14:30:24.743"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="0" pass="1">Critical Tests</stat>
-<stat fail="0" pass="1">All Tests</stat>
+<stat fail="1" pass="1">Critical Tests</stat>
+<stat fail="1" pass="1">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat fail="0" id="s1" name="GET" pass="1">GET</stat>
+<stat fail="1" id="s1" name="GET" pass="1">GET</stat>
 </suite>
 </statistics>
 <errors>
