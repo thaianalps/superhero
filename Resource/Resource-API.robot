@@ -5,26 +5,69 @@ Library           Collections
 Library           ExtendedRequestsLibrary
 
 *** Variable ***
-${PUBLIC_KEY}    6eaf0e771cab46e2e79c865b8c24601d
-${PRIVATE_KEY}   5aa5c0a7c97a3e0cf774a236556f1847cd8356db
-${URL}           https://gateway.marvel.com:443/v1/public
+
+${URL}           https://www.superheroapi.com/api.php/3045712542120919
 
 *** Keywords ***
 
 obtive permissão junto ao J.A.R.V.I.S.
-    ${SESSION}  Create Session    SuperHero    ${URL}
-    # Log  ${SESSION.content}
+    Create Session    SuperHero    ${URL}
 
 procuro pelos dados secretos do homem de ferro
-    ${INFO_HERO}     Get Request    SuperHero     uri=/comics?ts=1&apikey=${PUBLIC_KEY}&hash=${PRIVATE_KEY}
-    Log  ${INFO_HERO.content}
+    ${INFO_HERO}     Get Request  SuperHero                 uri=/346
     Should Be Equal As Strings    ${INFO_HERO.status_code}  200
+    Set Test Variable             ${INFO_HERO}              ${INFO_HERO.json()}
 
-#
-# no response o nome apresentado é ""
-#
-#
-# o nível de inteligencia apresentado é ""
-#
-#
-# o seus aliados apresentados são ""
+procuro pelos dados secretos do Deadpool
+    ${DEADPOOL}     Get Request  SuperHero                 uri=/213
+    Should Be Equal As Strings    ${DEADPOOL.status_code}  200
+    Log  ${DEADPOOL.json()['powerstats']}
+    Set Test Variable             ${DEADPOOL_PODERES}              ${DEADPOOL.json()['powerstats']}
+
+procuro pelos dados secretos do Coringa
+    ${CORINGA}     Get Request  SuperHero                 uri=/370
+    Should Be Equal As Strings    ${CORINGA.status_code}  200
+    Log  ${CORINGA.json()['powerstats']}
+    Set Test Variable             ${CORINGA_PODERES}             ${CORINGA.json()['powerstats']}
+
+no response o atributo "${ATRIBUTO}" está presente
+    Dictionary Should Contain key     ${INFO_HERO}    ${ATRIBUTO}
+    #contem o atributo Name, sem verificaçao do conteudo
+
+o conteúdo apresentado no atributo Full-name é "${NOME}"
+    Dictionary Should Contain Item    ${INFO_HERO['biography']}   full-name     Tony Stark
+
+o nível de inteligencia encontrada é "${INTELIGENCIA}"
+    Should Be Equal As Strings        ${INFO_HERO['powerstats']['intelligence']}   ${INTELIGENCIA}
+
+o seus aliados são "${POSICAO_0}", "${POSICAO_3}", "${POSICAO_1}"
+    Log   ${INFO_HERO['biography']['aliases']}
+    List Should Contain Value         ${INFO_HERO['biography']['aliases']}      ${POSICAO_0}
+    List Should Contain Value         ${INFO_HERO['biography']['aliases']}      ${POSICAO_1}
+    List Should Contain Value         ${INFO_HERO['biography']['aliases'][3]}   ${POSICAO_3}
+    #verificaçao de valor em lista, especificando posiçao ou nao
+
+verificar quem é o mais inteligente
+    Log  ${DEADPOOL_PODERES['intelligence']}
+    Log  ${CORINGA_PODERES['intelligence']}
+    ${VERDADE} =    Set Variable       Deadpool é mais inteligente que o Coringa
+    ${FALSO} =      Set Variable       Coringa é mais inteligente que o Deadpool
+    ${RESULTADO} =    Set variable if    ${DEADPOOL_PODERES['intelligence']}>${CORINGA_PODERES['intelligence']}  ${VERDADE}  ${FALSO}
+    Log To Console    ${RESULTADO}
+
+verificar quem é o mais forte
+    Log  ${DEADPOOL_PODERES['strength']}
+    Log  ${CORINGA_PODERES['strength']}
+    ${VERDADE} =    Set Variable       Deadpool é mais forte que o Coringa
+    ${FALSO} =      Set Variable       Coringa é mais forte que o Deadpool
+    ${RESULTADO} =    Set variable if    ${DEADPOOL_PODERES['strength']}>${CORINGA_PODERES['strength']}  ${VERDADE}  ${FALSO}
+    Log To Console    ${RESULTADO}
+
+
+verificar quem é o mais rápido
+    Log  ${DEADPOOL_PODERES['speed']}
+    Log  ${CORINGA_PODERES['speed']}
+    ${VERDADE} =    Set Variable       Deadpool é mais rápido que o Coringa
+    ${FALSO} =      Set Variable       Coringa é mais rápido que o Deadpool
+    ${RESULTADO} =    Set variable if    ${DEADPOOL_PODERES['speed']}>${CORINGA_PODERES['speed']}  ${VERDADE}  ${FALSO}
+    Log To Console    ${RESULTADO}
