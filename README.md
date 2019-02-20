@@ -29,3 +29,5 @@ Você vai precisar de:
 ##### Comando básico para execução:
 
 robot -d Results superhero/Get/GET.robot
+
+##### Dúvidas? Pode entrar em contato aqui pelo github mesmo =D
