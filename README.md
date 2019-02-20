@@ -17,7 +17,7 @@ Você vai precisar de:
 
 #### Após executar o projeto, recomendo que tente fazer algumas melhorias:
 
-> Você reparou que a parte o passo "Dado que" no arquivo GET.robot é repetida diversas vezes nos cenários, certo? Porém, é possível que ela seja apresentada somente 1 vez. Como você faria?
+> Você reparou que o passo "Dado que" no arquivo GET.robot é repetida diversas vezes nos cenários, certo? Porém, é possível que ela seja apresentada somente 1 vez. Como você faria?
 
 > Os testes "Batalha super trunfo: Mulher Maravilha vs Batman" e "Buscar por dados secretos do Yoda" estão incompletos. Como você escreverá o resource reaproveitando o que já tem?
 
