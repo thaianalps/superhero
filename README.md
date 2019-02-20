@@ -17,4 +17,13 @@ Robot Framework em Testes de API
 
 > Você reparou que a parte "Dado que" é repetida diversas vezes nos cenários, certo? Porém, é possível que ela seja apresentada somente 1 vez. Como você faria?
 
+> Os testes "Batalha super trunfo: Mulher Maravilha vs Batman" e "Buscar por dados secretos do Yoda" estão incompletos. Como você escreverá o resource reaproveitando o que já tem?
 
+> A parte da autenticação pode ser refatorada de uma forma que melhore a manutenção e o re-uso. Como você faria?
+
+> Quais outros de verificações podem ser feitas nessa mesma API?
+
+
+##### Comando básico para execução:
+
+robot -d Results superhero/Get/GET.robot

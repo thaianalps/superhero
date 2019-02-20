@@ -10,7 +10,7 @@ Buscar por dados secretos do Homem de ferro
     Quando procuro pelos dados secretos do homem de ferro
     Então no response o atributo "biography" está presente
     E o conteúdo apresentado no atributo Full-name é "Tony Stark"
-    E o seus aliados são "Iron Knight", "Cobalt Man II", "Hogan Potts"
+    E o seus aliados são "Iron Knight", "Cobalt Man II", "Spare Parts Man"
     E o nível de inteligencia encontrada é "90"
 
 Batalha super trunfo: Deadpool vs Coringa
@@ -21,7 +21,7 @@ Batalha super trunfo: Deadpool vs Coringa
     E descubro quem é o mais forte
     E descubro quem é o mais rápido
 
-Batalha super trunfo: Mulher Maravilha vs Batman
+# Batalha super trunfo: Mulher Maravilha vs Batman
 #     Dado que obtive permissão junto ao J.A.R.V.I.S.
 #     Quando procuro pelos dados secretos do Mulher-Maravilha
 #     E procuro pelos dados secretos do Batman
