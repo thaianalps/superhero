@@ -20,19 +20,18 @@ Batalha super trunfo: Deadpool vs Coringa
     Então deve retornar que o "CORINGA" é o mais inteligente
     E descubro quem é o mais forte
     E descubro quem é o mais rápido
-    
-Batalha super trunfo: Mulher Maravilha vs Batman
-    Dado que obtive permissão junto ao J.A.R.V.I.S.
-    Quando procuro pelos dados secretos do Mulher-Maravilha
-    E procuro pelos dados secretos do Batman
-    Então deve retornar que o nível de poder do Batman é "47"
-    E deve retornar que o nível de inteligencia da Mulher Maravilha é "88"
-    E descubro quem é o mais poderoso
-    
-Buscar por dados secretos do Yoda
-    Dado que obtive permissão junto ao J.A.R.V.I.S.
-    Quando procuro pelos dados secretos do Yoda
-    Então o conteúdo apresentado no atributo Full-name é "Yoda"
-    E deve retornar que o peso em quilo é "17 kg"
-    E deve retornar que a altura em centímetro é "66 cm"
-
+# 
+# Batalha super trunfo: Mulher Maravilha vs Batman
+#     Dado que obtive permissão junto ao J.A.R.V.I.S.
+#     Quando procuro pelos dados secretos do Mulher-Maravilha
+#     E procuro pelos dados secretos do Batman
+#     Então deve retornar que o nível de poder do Batman é "47"
+#     E deve retornar que o nível de inteligencia da Mulher Maravilha é "88"
+#     E descubro quem é o mais poderoso
+#
+# Buscar por dados secretos do Yoda
+#     Dado que obtive permissão junto ao J.A.R.V.I.S.
+#     Quando procuro pelos dados secretos do Yoda
+#     Então o conteúdo apresentado no atributo Full-name é "Yoda"
+#     E deve retornar que o peso em quilo é "17 kg"
+#     E deve retornar que a altura em centímetro é "66 cm"
