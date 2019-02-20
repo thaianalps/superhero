@@ -19,7 +19,7 @@ Batalha super trunfo: Deadpool vs Coringa
     E procuro pelos dados secretos do Deadpool
     Então deve retornar que o "CORINGA" é o mais inteligente
     E descubro quem é o mais forte
-    E descubro quem é o mais rápido
+    # E descubro quem é o mais rápido
 
 # Batalha super trunfo: Mulher Maravilha vs Batman
 #     Dado que obtive permissão junto ao J.A.R.V.I.S.
