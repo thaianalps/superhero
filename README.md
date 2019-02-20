@@ -9,7 +9,7 @@ Robot Framework em Testes de API
 
 - [Library ExtendedRequestsLibrary](https://rickypc.github.io/robotframework-extendedrequestslibrary/doc/ExtendedRequestsLibrary.html)
 
-
+- [API SuperHero](http://superheroapi.com/)
 
 
 
