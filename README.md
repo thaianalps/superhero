@@ -1,7 +1,7 @@
 Robot Framework em Testes de API
 ==================
 
-Você vai precisar de:
+Você precisará de:
 
 - [Projeto Robot Framework](https://robotframework.org/)
 
